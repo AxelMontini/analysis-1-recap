@@ -1,15 +1,100 @@
-\documentclass[11pt,a4paper]{article}
+\documentclass[10pt,a4paper,twocolumn]{article}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage[margin=1cm]{geometry}
 \usepackage{hyperref}
 
+
+\setlength{\columnsep}{1.4cm}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\newtheorem{lemma}{Lemma}[section]
+
+\newtheorem{satz}{Satz}[section]
+
+\newtheorem{korollar}{Korollar}[section]
+
+\newcommand{\seq}[1]{\left( #1_n \right)_{n \ge 1}}
+
 \title{Analysis 1 Recap}
 \author{Axel Montini \\ \href{mailto:amontini@student.ethz.ch}{amontini@student.ethz.ch}}
 
 \begin{document}
-    \maketitle
-    
-    \section{Folgen und Reihen}
+\maketitle
+
+\begin{korollar}
+    \label{korollar:inf-sup}
+    $A \subseteq B \subseteq \R$, dann
+    \begin{itemize}
+        \item $B$ nach oben beschraenkt $\Rightarrow \sup A \le \sup B$
+        \item $B$ nach unten beschraenkt $\Rightarrow \inf B \le \inf A$
+    \end{itemize}
+\end{korollar}
+
+\section{Folgen und Reihen}
+\begin{definition}
+    $\left\{ n \in \N : a_n \notin \left] l - \epsilon, l + \epsilon \right[ \right\}$
+    $\Rightarrow \seq{a}\ \mbox{heisst \textbf{konvergent}}$
+\end{definition}
+
+\begin{definition}
+    Grenzwert oder Limes der Folge: $\underset{n \to \infty}{\lim} a_n$
+\end{definition}
+
+\begin{lemma}
+    Equivalent Aussagen:
+    \begin{enumerate}
+        \item $\seq{a}$ konvergiert gegen $l = \lim_{n \to \infty} a_n$
+        \item $\forall \epsilon > 0\ \exists N \ge 1\ \left( \lvert a_n - l \rvert < \epsilon \quad \forall n \ge N \right)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{satz}
+    Konvergente Folgen $\seq{a},\ \seq{b},\ a = \lim_{n \to \infty} a_n,\ b = \lim_{n \to \infty} b_n$
+    \begin{enumerate}
+        \item $(a_n + b_n)_{n \ge 1}$ auch konvergent und $a + b = \lim_{n \to \infty} (a_n + b_n)$
+        \item $(a_n \cdot b_n)_{n \ge 1}$ konvergiert und $a \cdot b = \lim \dots$
+        \item $\forall n \ge 1\ (b_n \ne 0)$ and $b \ne 0$. Dann $\left(\frac{a_n}{b_n}\right)_{n \ge 1}$ konvergent und $\frac{a}{b} = \lim \dots$
+        \item $\exists K \ge 1\ \left(\forall n \ge K\ (a_n \le b_n)\right) \Rightarrow a \le b$
+    \end{enumerate}
+\end{satz}
+
+\begin{definition}
+    \[\forall n \ge 1\ (a_n \le a_{n + 1}) \Rightarrow \seq{a} \mbox{ist \textbf{monoton wachsend}}\]
+    \[\forall n \ge 1\ (a_n \ge a_{n + 1}) \Rightarrow \seq{a} \mbox{ist \textbf{monoton fallend}}\]
+\end{definition}
+
+\begin{satz}
+    \par \textbf{Weierstrass}
+    \begin{itemize}
+        \item $\seq{a}$ monoton wachsend und nach oben beschraenkt. Dann konvergiert mit $\lim_{n \to \infty} a_n = \sup \left\{ a_n : n \ge 1 \right\}$
+        \item $\seq{a}$ monoton fallend und nach unten beschraenkt. Dann konvergiert mit $\lim_{n \to \infty} a_n = \inf \left\{ a_n : n \ge 1 \right\}$
+    \end{itemize}
+\end{satz}
+
+\begin{lemma}
+    Bernoulli Ungleichung: $(1 + x)^n \ge 1 + nx\ \forall n \in \N,\ x > -1$
+\end{lemma}
+
+\begin{definition}
+    \par Limes superior und limes inferior.
+    Folge $\seq{a}$ + Weierstrass, definiert man zwei monotone Folgen $\seq{b}$ und $\seq{c}$.
+    Fuer jedes $n \ge 1$: $b_n = \inf \left\{ a_k : k \ge n \right\}$ und $c_n = \sup \left\{ a_k : k \ge n \right\}$.
+    Dann folgt aus Korollar \ref{korollar:inf-sup}:
+    $b_n \le b_{n + 1}\ \forall n \ge 1$ und $c_n \ge c_{n + 1}\ \forall n \ge 1$ (beide konvergieren).
+
+    \begin{itemize}
+        \item Limes inferior: $\underset{n \to \infty}{\lim \inf} a_n := \lim_{n \to \infty} b_n$
+        \item Limes superior: $\underset{n \to \infty}{\lim \sup} a_n := \lim_{n \to \infty} c_n$
+    \end{itemize}\
+
+    Aus $b_n \le c_n$ folgt $\liminf_{n \to \infty} a_n \le \limsup_{n \to \infty} a_n$
+\end{definition}
 \end{document}
