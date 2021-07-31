@@ -7,6 +7,8 @@
 \usepackage[margin=0.5cm]{geometry}
 \usepackage{hyperref}
 \usepackage{todonotes}
+\usepackage{xstring}
+\usepackage{catchfile}
 
 \setlength{\columnsep}{1cm}
 \setlength{\columnseprule}{0.2pt}
@@ -42,8 +44,19 @@
 
 \newcommand{\seq}[1]{\left( #1_n \right)_{n \ge 1}}
 
+% Read branchname and commit id from HEAD, to be added to the document
+\CatchFileDef{\headfull}{.git/HEAD}{}
+\StrGobbleRight{\headfull}{1}[\head]
+\StrBehind[2]{\head}{/}[\branch]
+\IfFileExists{.git/refs/heads/\branch}{%
+    \CatchFileDef{\commit}{.git/refs/heads/\branch}{}
+}{%
+    \newcommand{\commit}{\dots~(in \emph{packed-refs})}
+}
+
 \title{Analysis 1 Recap}
 \author{Axel Montini \\ \href{mailto:amontini@student.ethz.ch}{amontini@student.ethz.ch}}
+\date{\today \hfill \texttt{\branch}, \texttt{\commit}}
 
 \begin{document}
 \maketitle
