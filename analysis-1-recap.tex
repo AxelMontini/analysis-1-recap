@@ -1,11 +1,12 @@
-\documentclass[8pt,a4paper,twocolumn]{extarticle}
+\documentclass[8pt,a4paper,twocolumn,table]{extarticle}
+\usepackage[table]{xcolor}
 \usepackage{mathtools}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{amssymb}
 \usepackage[margin=0.5cm]{geometry}
 \usepackage{hyperref}
 \usepackage{todonotes}
-
 
 \setlength{\columnsep}{1cm}
 \setlength{\columnseprule}{0.2pt}
@@ -13,6 +14,10 @@
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+
+\DeclareMathOperator{\acosh}{acosh}
+\DeclareMathOperator{\asinh}{asinh}
+\DeclareMathOperator{\atanh}{atanh}
 
 
 \newtheorem{innercustomgeneric}{\customgenericname}
@@ -537,7 +542,7 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 
 \begin{satz}{4.16}[Rolle 1690]
     $f: [a, b] \to \R$ stetig und in $]a, b[$ differenzierbar.
-    \[ f(a) = f(b) \implies \exists \xi \in ]a, b[\ \left( f'(\xi) = 0 \right) \]
+            \[ f(a) = f(b) \implies \exists \xi \in ]a, b[\ \left( f'(\xi) = 0 \right) \]
 \end{satz}
 
 \begin{satz}{4.17}[Lagrange 1797]
@@ -547,13 +552,13 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 
 \begin{satz}{4.22}[Cauchy]
     $f,g : [a,b] \to \R$ stetig und in $]a, b[$ differezierbar.
-    Dann gibt es $\xi \in ]a, b[$ mit
-    \[ g'(\xi)(f(b) - f(a)) = f'(\xi)(g(b) - g(a)) \]
+                    Dann gibt es $\xi \in ]a, b[$ mit
+                    \[ g'(\xi)(f(b) - f(a)) = f'(\xi)(g(b) - g(a)) \]
 
-    falls $g'(x) \ne 0\ \forall x \in ]a, b[$ folgt
+                    falls $g'(x) \ne 0\ \forall x \in ]a, b[$ folgt
     \begin{align*}
-        &g(a) \ne g(b)\\
-        &\frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}
+         & g(a) \ne g(b)                                             \\
+         & \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}
     \end{align*}
 \end{satz}
 
@@ -570,11 +575,11 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 \begin{definition}{4.26}
     \begin{enumerate}
         \item $f$ ist \textbf{konvex} auf $I$ falls für alle $x \le y,\ x,y \in I$ und $\lambda \in [0,1]$
-        \[ f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y) \]
-        gilt.
+              \[ f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y) \]
+              gilt.
         \item $f$ ist \textbf{streng konvex} auf $I$ falls für alle $x < y,\ x,y \in I$ und $\lambda \in [0,1]$
-        \[ f(\lambda x + (1 - \lambda)y) < \lambda f(x) + (1 - \lambda)f(y) \]
-        gilt.
+              \[ f(\lambda x + (1 - \lambda)y) < \lambda f(x) + (1 - \lambda)f(y) \]
+              gilt.
     \end{enumerate}
 \end{definition}
 
@@ -587,7 +592,7 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 \begin{definition}{4.32}
     \begin{enumerate}
         \item Für $n \ge 2$ ist $f$ \textbf{n-mal differenzierbar in $D$} falls $f^{(n-1)}$ in $D$ differenzierbar ist.
-        Dann ist $f^(n) := (f^{(n - 1)})'$ und nennt sich die n-te Ableitung von $f$.
+              Dann ist $f^(n) := (f^{(n - 1)})'$ und nennt sich die n-te Ableitung von $f$.
         \item Die funktion $f$ ist \textbf{n-mal stetig differenzierbar in $D$}, falls die n-mal differenzierbar ist und falls $f^{(n)}$ in $D$ stetig ist.
         \item Die funktion $f$ ist in $D$ \textbf{glatt}, falls sie $\forall n \ge 1$ n-mal differenzierbar ist.
     \end{enumerate}
@@ -597,11 +602,296 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
     $f,g: D \to \R$ n-mal differenzierbar in $D$, dann:
     \begin{enumerate}
         \item $f + g$ n-mal diff. ist und $(f + g)^{(n)} = f^{(n)} + g^{(n)}$
-        \item $f \cdot g$ n-mal diff. ist und 
-        \[ (f \cdot g)^{(n)} = \sum_{k=0}^n \binom{n}{k} f^{(k)}g^{(n - k)} \]
+        \item $f \cdot g$ n-mal diff. ist und
+              \[ (f \cdot g)^{(n)} = \sum_{k=0}^n \binom{n}{k} f^{(k)}g^{(n - k)} \]
     \end{enumerate}
 \end{satz}
 
 \subsection{Taylor}\todo[inline]{Maybe?}
+
+\section{Riemann Integral}
+
+\begin{definition}{5.1}
+    Eine \textbf{Partition} von $I$ ist eine endliche Teilmenge $P \subsetneq [a, b]$ wobei $\{a,b\} \subseteq P$.
+\end{definition}
+
+\begin{definition}{}[Untersumme, Obersumme]
+    \begin{alignat*}{2}
+        \mbox{Partition}\  & P = \{x_0, x_1, ..., x_n\}\           & \mbox{mit}\ x_0 = a < x_1 < ... < x_n = b \\
+                           & \delta_i = x_i - x_{i - 1},           & i \ge 1                                   \\
+                           & s(f, P) := \sum_{i=1}^n f_i \delta_i, & f_i = \inf_{x_{i - 1} \le x \le x_i} f(x) \\
+                           & S(f, P) := \sum_{i=1}^n F_i \delta_i, & F_i = \sup_{x_{i - 1} \le x \le x_i} f(x) \\
+    \end{alignat*}
+\end{definition}
+
+\begin{lemma}{5.2}
+    \begin{enumerate}
+        \item Sei $P'$ eine Vereinfachung von $P$, dann gilt $s(f, P) \le s(f, P') \le S(f, P') \le S(f, P)$
+        \item Für beliebige Partitionen $P_1, P_2$ gilt: $s(f, P_1) \le S(f, P_2)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{definition}{}
+    Sei $\mathcal{P}(I)$ der Menge der Partitionen von $I$.
+    \begin{align*}
+        s(f) & := \sup_{P \in \mathcal{P}(I)} s(f, P) \\
+        S(f) & := \inf_{P \in \mathcal{P}(I)} S(f, P)
+    \end{align*}
+\end{definition}
+
+\begin{satz}{5.3}
+    Eine beschränkte Funktion $f: [a,b] \to \R$ ist \textbf{Riemann integrierbar} (oder kurz: integrierbar) falls
+    \[ s(f) = S(f) \]
+    In diesem fall bezeichnen wir den gemeinsamen Wert von $s(f)$ und $S(f)$ mit
+    \[ \int_a^b f(x) dx \]
+\end{satz}
+
+\begin{satz}{5.4}
+    Eine beschränkte Funkiton ist genau dann integrierbar falls
+    \[ \forall \epsilon > 0\ \exists P \in \mathcal{P}(I)\ \mbox{mit}\ S(f, P) - s(f, P) \le \epsilon \]
+\end{satz}
+
+\begin{satz}{5.8}[Du Bois-Reymond 1875, Darboux 1875]
+    Eine beschränkte Funktion $f: [a, b] \to \R$ ist genau dann integrierbar, falls $\forall \epsilon > 0\ \exists \delta > 0$
+    so dass
+    \[ \forall P \in \mathcal{P}_\delta(I),\ S(f, P) - s(f, P) < \epsilon \]
+\end{satz}
+
+\begin{satz}{5.10}
+    Seien $f, g: [a, b] \to \R$ beschränkt, integrierbar und $\lambda \in R$. Dann sind $f + g$, $\lambda \cdot f$, $f \cdot g$, $|f|$,
+    $\max(f, g)$, $\min(f, g)$ und $\frac{f}{g}$ (falls $|g(x)| \ge \beta > 0\ \forall x \in [a, b]$) integrierbar
+\end{satz}
+
+\begin{definition}
+    Eine funktion $f: D \to \R$ ist \textbf{gleichmässig stetig}, falls
+    \[ \forall \epsilon > 0\ \exists \delta > 0\ \forall x,y \in D\ \left( |x - y| < \delta \implies |f(x) - f(y)| < \epsilon \right) \]
+
+    Example: $f: \R \to \R, x \mapsto x^2$ ist stetig, aber nicht nicht gleichmässig stetig.
+\end{definition}
+
+\begin{satz}{5.15}[Heine]
+    Sei $f: [a,b] \to \R$ stetig in dem kompakten Intervall $[a,b]$. Dann ist $f$ in $[a,b]$ gleichmässig stetig.
+\end{satz}
+
+\begin{satz}{5.16}[Integrierbar/Stetig]
+    Sei $f: [a,b] \to \R$ stetig. Dann ist $f$ integrierbar.
+\end{satz}
+
+\begin{satz}{5.17}
+    Sei $f: [a,b] \to \R$ monoton. Dann ist $f$ integrierbar.
+\end{satz}
+
+\begin{satz}{5.19}
+    Sei $I \subsetneq \R$ ein kompaktes Intervall mit Endpunkten $a, b$ sowie $f_1, f_2: I \to \R$ beschränkt integrierbar
+    und $\lambda_1,\lambda_2 \in \R$. Dann gilt
+    \[ \int_a^b (\lambda_1 f_1(x) | \lambda_2 f_2(x)) dx = \lambda_1 \int_a^b f_1(x)dx + \lambda_2 \int_a^b f_2(x) dx \]
+\end{satz}
+
+\begin{satz}{5.20}
+    $f, g: [a,b] \to \R$ beschränkt integrierbar, und $f(x) \le g(x)\ \forall x \in [a, b]$.
+    Dann folgt
+    \[ \int_a^b f(x)dx \le \int_a^b g(x)dx \]
+\end{satz}
+
+\begin{satz}{5.22}[Cauchy 1821, Schwarz 1885, Bunjakovski 1859]
+    Seien $f,g: [a,b] \to \R$ beschränkt integrierbar. Dann gilt
+    \[ \left| \int_a^b f(x)g(x) dx \right| \le \sqrt{\int_a^b f^2(x)dx} \sqrt{\int_a^b g^2(x)dx} \]
+\end{satz}
+
+\begin{satz}{5.23}[Mittelwertsatz, Cauchy 1821]
+    Sei $f: [a,b] \to \R$ stetig. Dann gibt es $\xi \in [a,b]$ mit
+    \[ \int_a^b f(x) dx = f(\xi)(b-a) \]
+\end{satz}
+
+\subsection{Differentialrechnung}
+
+\begin{satz}{5.26}
+    Seien $a < b$ und $f: [a, b] \to \R$ stetig. Die Funktion
+    \[ F(x) = \int_a^x f(t) dt,\quad a \le x \le b \]
+    ist int $[a, b]$ stetig differenzierbar und
+    \[ F'(x) = f(x, \quad \forall x \in [a, b]) \]
+\end{satz}
+
+\begin{definition}{5.27}
+    Sei $a < b$ und $f: [a,b] \to \R$ stetig. Eine Funktion $F: [a,b ] \to \R$ heisst \textbf{Stammfunktion} von $f$, falls $F$
+    (stetig) differenzierbar in $[a, b]$ ist und $F' = f$ in $[a, b]$ gilt.
+\end{definition}
+
+\begin{satz}{5.28}[Fundamentalsatz der Differenzialrechnung]
+    Sei $f: [a,b] \to \R$ stetig. Dann gibt es eine Stammfunktion $F$ von $f$, die bis auf eine additive Konstante eindeutig bestimmt ist und es gilt:
+    \[ \int_a^b f(x)dx = F(b) - F(a) \]
+\end{satz}
+
+\begin{satz}{5.30}[Partielle Integration]
+    Seie $a<b$ relle Zahlen und $f,g: [a,b] \to \R$ stetig differenzierbar. Dann gilt
+    \[ \int_a^b f(x)g'(x)dx = f(b)g(b) - f(a)g(a) - \int_a^b f'(x)g(x)dx \]
+\end{satz}
+
+\begin{satz}{5.31}[Substitution]
+    sei $a < b$, $\phi: [a, b] \to \R$ stetig differenzierbar, $I \subseteq  \R$ ein Intervall mit $\phi([a, b]) \subseteq I$ und $f: I \to \R$ eine stetige Funktion.
+    Dann gilt
+    \[ \int_{\phi(a)}^{\phi(b)} f(x)dx = \int_a^b f(\phi(t)) \phi'(t) dt \]
+\end{satz}
+
+\subsection{Integration konvergenter Reihen}
+\begin{satz}{5.34}
+    Sei $f_n: [a, b] \to \R$ eine Folge von beschränkten, integrierbaren Funktionen die gleichmässig gegen eine Funktion $f: [a,b] \to \R$ konvergiert.
+    Dann ist $f$ beschränkt integrierbar und
+    \[ \lim_{n \to \infty} \int_a^b f_n(x)dx = \int_a^b f(x)dx \]
+\end{satz}
+
+\subsection{Euler-McLaurinSummationsformel}
+\todo[inline]{maybe useful? maybe not?}
+
+\subsection{Uneigentliche Integrale}
+\begin{definition}
+    Sei $f: [a, \infty[ \to \R$ beschränkt und integrierbar auf $[a,b]$ für alle $b > a$. Falls
+    \[ \lim_{b \to \infty} \int_a^b f(x) dx \]
+    existiert, bezeichnen wir den Grenzwert mit
+    \[ \int_a^\infty f(x)dx \]
+    und sagen, dass $f$ auf $[a, \infty[$ integrierbar ist.
+\end{definition}
+
+\begin{satz}{5.53}[McLaurin 1742]
+    Sei $f: [1, \infty[ \to [0, \infty[$ monoton fallend. Die Reihe
+    \[ \sum_{n=1}^\infty f(n) \]
+    konvergiert genau dann, wenn
+    \[ \int_a^\infty f(x)dx \]
+    konvergiert.
+\end{satz}
+
+\begin{definition}{5.56}[NATO caliber]
+    In dieser Situation ist $f: ]a, b] \to \R$ integrierbar, falls
+    \[ \lim_{\epsilon \to 0^+} \int_{a + \epsilon}^b f(x)dx \]
+    existiert. In diesem Fall wird den Grenzwert mit
+    $\int_a^b f(x)dx$ bezeichnet
+\end{definition}
+
+\subsection{Die Gamma Funktion}
+
+\begin{definition}{5.59}
+    Für $s > 0$ definieren wir
+    \[ \Gamma(s) := \int_0^\infty e^{-x} x^{s - 1} dx \]
+
+    Konvergiert für alle $s > 0$
+\end{definition}
+
+
+\begin{satz}{5.60}[Bohr-Mollerup]
+    \begin{enumerate}
+        \item Die Gamma Funktion erfüllt die Relationen
+              \begin{enumerate}
+                  \item $\Gamma(1) = 1$
+                  \item $\Gamma(s + 1) = s\Gamma(s)\ \forall s > 0$
+                  \item $\Gamma$ ist logarithmisch konvex, das heisst $\Gamma(\lambda x + (1 - \lambda)y) \le \Gamma(x)^\lambda \Gamma(y)^{1 - \lambda}$
+                        für alle $x,y > 0$ und $0 \le \lambda \le 1$
+              \end{enumerate}
+        \item Die Gamma Funktion ist die einzige Funktion $]0, \infty[ \to ]0, \infty[$, die die drei Relationen erfüllt.
+              Darüber hinaus gilt:
+              \[ \Gamma(x) = \lim_{n \to +\infty} \frac{n! n^x}{x(x+1)...(x+n)}\ \forall x > 0 \]
+    \end{enumerate}
+\end{satz}
+
+\begin{lemma}{5.61}
+    Sei $p > 1$ und $q > 1$ mit $\frac{1}{p} + \frac{1}{q} = 1$.
+    Dann gilt $\forall a,b \ge 0$
+    \[ a \cdot b \le \frac{a^p}{p} + \frac{b^q}{q} \]
+\end{lemma}
+
+\begin{satz}{5.62}[Hölder Ungleichung]
+    Seien $p > 1$ und $q > 1$ mit $\frac{1}{p} + \frac{1}{q} = 1$.
+    Für alle $f, g: [a,b] \to \R$ stetig gilt
+    \[ \int_a^b |f(x)g(x)|dx \le ||f||_p||g||_q \]
+
+    Wobei
+    \[ ||f||_p := \left( \int_a^b |f(x)|^p dx \right)^{\frac{1}{p}} \]
+\end{satz}
+
+\subsection{Das unbestimmte Integral}
+
+Sei $f: I \to \R$ auf einem Intervall $I \subseteq \R$ definiert. Falls $f$ stetig ist, gibt es eine Stammfunktion $F$ für $f$. Wir schreiben
+\[ \int f(x)dx = F(x) + C \]
+
+\subsubsection{Stammfunktionen von rationalen Funktionen}
+
+\section{Derivative Cheat Sheet}
+
+Properties
+\begin{alignat*}{2}
+     & (cf)' = c f'(x)     & (f \pm g)' = f'(x) \pm g'(x)                       \\
+     & (fg)' = f'g + fg'   & (\frac{f}{g})' = \frac{f'g - fg'}{g^2}             \\
+     & \frac{d}{dx}(c) = 0 & \frac{d}{dx}\left( g(f(x)) \right) = g'(f(x))f'(x)
+\end{alignat*}
+
+\begin{tabular}{|c | c |}
+    \hline
+    \rowcolor{lightgray} $f(x)$ & $f'(x)$                       \\
+    \hline
+    $x$                         & $1$                           \\
+    \hline
+    $x^n$                       & $nx^{n-1}$                    \\
+    \hline
+    $\sin x$                    & $\cos x$                      \\
+    \hline
+    $ \cos x $                  & $ -\sin x $                   \\
+    \hline
+    $ \tan x $                  & $ \sec^2 x $                  \\
+    \hline
+    $ \sec x $                  & $ \sec x \tan x $             \\
+    \hline
+    $ \csc x $                  & $ -\csc x \cot x$             \\
+    \hline
+    $ \cot x $                  & $ -\csc^2 x $                 \\
+    \hline
+    $ \arcsin x$                & $ \frac{1}{\sqrt{1 - x^2}} $  \\
+    \hline
+    $ \arccos x$                & $ -\frac{1}{\sqrt{1 - x^2}} $ \\
+    \hline
+    $ \arctan x$                & $ \frac{1}{1 + x^2} $         \\
+    \hline
+    $ a^x $                     & $ a^x \ln(a) $                \\
+    \hline
+    $ e^x $                     & $ e^x $                       \\
+    \hline
+    $ \ln(x) $                  & $ \frac{1}{x},\ x > 0 $       \\
+    \hline
+    $ \ln(|x|) $                & $ \frac{1}{x},\ x \ne 0 $     \\
+    \hline
+    $ \log_a(x) $               & $ \frac{1}{x \ln a},\ x > 0 $ \\
+\end{tabular}
+
+\section{Integral Cheat Sheet}
+
+\[ \int f(x)dx = F(x) + C \]
+
+\begin{tabular}{| c | c |}
+    \hline
+    \rowcolor{lightgray} $f(x)$ & $F(X)$ (without $+ C)$               \\
+    \hline
+    $x^s$                       & $\frac{x^{s + 1}}{s + 1},\ s \ne -1$ \\
+    \hline
+    $x^s$                       & $\ln x,\ x \ge 0$                    \\
+    \hline
+    $e^x$                       & $e^x$                                \\
+    \hline
+    $\sin x$                    & $-\cos x$                            \\
+    \hline
+    $\cos x$                    & $\sin x$                             \\
+    \hline
+    $\sinh x$                   & $\cosh x$                            \\
+    \hline
+    $\cosh x$                   & $\sinh x$                            \\
+    \hline
+    $\frac{1}{\sqrt{1 - x^2}}$  & $\arcsin x$                          \\
+    \hline
+    $\frac{1}{1 + x^2}$         & $\arctan x$                          \\
+    \hline
+    $\frac{1}{\sqrt{1 + x^2}}$  & $\asinh x$                           \\
+    \hline
+    $\frac{1}{\sqrt{x^2 - 1}}$  & $\acosh x$                           \\
+    \hline
+\end{tabular}
+
+\todo[inline]{More?}
 
 \end{document}
