@@ -67,16 +67,17 @@
     \label{korollar:inf-sup}
     $A \subseteq B \subseteq \R$, dann
     \begin{itemize}
-        \item $B$ nach oben beschraenkt $\Rightarrow \sup A \le \sup B$
-        \item $B$ nach unten beschraenkt $\Rightarrow \inf B \le \inf A$
+        \item $B$ nach oben beschraenkt $\implies \sup A \le \sup B$
+        \item $B$ nach unten beschraenkt $\implies \inf B \le \inf A$
     \end{itemize}
 \end{korollar}
 
 \section{Folgen und Reihen}
 \subsection{Folgen}
 \begin{definition}{2.4}
-    $\left\{ n \in \N : a_n \notin \left] l - \epsilon, l + \epsilon \right[ \right\}$
-    $\Rightarrow \seq{a}\ \mbox{heisst \textbf{konvergent}}$
+    \[
+        \left\{ n \in \N : a_n \notin \left] l - \epsilon, l + \epsilon \right[ \right\} \implies \seq{a}\ \mbox{heisst \textbf{konvergent}}
+    \]
 \end{definition}
 
 \begin{definition}{2.4+}
@@ -97,19 +98,19 @@
         \item $(a_n + b_n)_{n \ge 1}$ auch konvergent und $a + b = \lim_{n \to \infty} (a_n + b_n)$
         \item $(a_n \cdot b_n)_{n \ge 1}$ konvergiert und $a \cdot b = \lim \dots$
         \item $\forall n \ge 1\ (b_n \ne 0)$ and $b \ne 0$. Dann $\left(\frac{a_n}{b_n}\right)_{n \ge 1}$ konvergent und $\frac{a}{b} = \lim \dots$
-        \item $\exists K \ge 1\ \left(\forall n \ge K\ (a_n \le b_n)\right) \Rightarrow a \le b$
+        \item $\exists K \ge 1\ \left(\forall n \ge K\ (a_n \le b_n)\right) \implies a \le b$
     \end{enumerate}
 \end{satz}
 
 \begin{definition}{2.10}
-    \[\forall n \ge 1\ (a_n \le a_{n + 1}) \Rightarrow \seq{a} \mbox{ist \textbf{monoton wachsend}}\]
-    \[\forall n \ge 1\ (a_n \ge a_{n + 1}) \Rightarrow \seq{a} \mbox{ist \textbf{monoton fallend}}\]
+    \[\forall n \ge 1\ (a_n \le a_{n + 1}) \implies \seq{a} \mbox{ist \textbf{monoton wachsend}}\]
+    \[\forall n \ge 1\ (a_n \ge a_{n + 1}) \implies \seq{a} \mbox{ist \textbf{monoton fallend}}\]
 \end{definition}
 
 \begin{satz}{2.11}[Weierstrass]
     \begin{itemize}
-        \item $\seq{a}$ monoton wachsend und nach oben beschraenkt. Dann konvergiert mit $\lim_{n \to \infty} a_n = \sup \left\{ a_n : n \ge 1 \right\}$
-        \item $\seq{a}$ monoton fallend und nach unten beschraenkt. Dann konvergiert mit $\lim_{n \to \infty} a_n = \inf \left\{ a_n : n \ge 1 \right\}$
+        \item $\seq{a}$ ist monoton wachsend und nach oben beschränkt. Dann konvergiert es mit \[ \lim_{n \to \infty} a_n = \sup \left\{ a_n : n \ge 1 \right\} \]
+        \item $\seq{a}$ ist monoton fallend und nach unten beschränkt. Dann konvergiert es mit \[ \lim_{n \to \infty} a_n = \inf \left\{ a_n : n \ge 1 \right\} \]
     \end{itemize}
 \end{satz}
 
@@ -133,13 +134,13 @@
 
 \begin{lemma}{2.19}
     \[
-        \seq{a}\ \mbox{konv.} \Leftrightarrow \seq{a}\ \mbox{besch. und}\ \liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n
+        \seq{a}\ \mbox{konv.} \iff \seq{a}\ \mbox{besch. und}\ \liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n
     \]
 \end{lemma}
 
 \begin{satz}{2.20}[Cauchy Criterium]
     \label{satz:cauchy-criterium-folge}
-    \[ \seq{a}\ \mbox{konvergent} \Leftrightarrow \forall \epsilon > 0\
+    \[ \seq{a}\ \mbox{konvergent} \iff \forall \epsilon > 0\
         \exists N \ge 1\ \left( \forall n,m \ge N \left( \lvert a_n - a_m \rvert < \epsilon \right) \right) \]
 \end{satz}
 
@@ -190,7 +191,7 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
     \par Cauchy Criterium, konvergente Reihe
     \[
         \sum_{k=1}^\infty a_k\ \mbox{konvergent}
-        \Leftrightarrow
+        \iff
         \forall \epsilon > 0\ \exists N \ge 1\ \left( \left| \sum_{k=n}^m a_k \right| < \epsilon,\ \forall m \ge n \ge N \right)
     \]
 \end{satz}
@@ -200,23 +201,23 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
         (a_k \ge 0\ \forall k \in \N^*)
         \quad
         \sum_{k=1}^\infty a_k\ \mbox{konvergent}
-        \Leftrightarrow
-        \seq{S}\ \mbox{nachoben beschraenkt}
+        \iff
+        \seq{S}\ \mbox{nach oben beschr.}
     \]
 \end{satz}
 
 \begin{korollar}{2.43}[Vergleichssatz]
     \begin{align*}
-        b_k \ge a_k \ge 0\ \forall k \ge 1
-        \Rightarrow \begin{cases}
-            \sum_{k=1}^\infty b_k\ \mbox{konvergent} & \Rightarrow \sum_{k=1}^\infty a_k\ \mbox{konvergent} \\
-            \sum_{k=1}^\infty a_k\ \mbox{divergent}  & \Rightarrow \sum_{k=1}^\infty b_k\ \mbox{divergent}
+        b_k \ge a_k \ge 0\ \forall k \ge 1 \\
+        \implies \begin{cases}
+            \sum_{k=1}^\infty b_k\ \mbox{konvergent} & \implies \sum_{k=1}^\infty a_k\ \mbox{konvergent} \\
+            \sum_{k=1}^\infty a_k\ \mbox{divergent}  & \implies \sum_{k=1}^\infty b_k\ \mbox{divergent}
         \end{cases}
     \end{align*}
 \end{korollar}
 
 \begin{definition}{2.45}
-    \[ \sum_{k=1}^\infty \left| a_k \right|\ \mbox{konvergiert} \Rightarrow  \sum_{k=1}^\infty a_k\ \mbox{\textbf{konvergiert absolut}} \]
+    \[ \sum_{k=1}^\infty \left| a_k \right|\ \mbox{konvergiert} \implies  \sum_{k=1}^\infty a_k\ \mbox{\textbf{konvergiert absolut}} \]
 \end{definition}
 
 \begin{satz}{2.46}
@@ -225,17 +226,17 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 
 \begin{satz}{2.48}[Leibniz 1682]
     \begin{align*}
-         & \seq{a}\ \mbox{monoton fallend}, a_n \ge 0, \lim_{n \to \infty} a_n = 0                                     \\
-         & \Rightarrow S := \sum_{k=1}^\infty (-1)^{k+1} a_k \ \mbox{konvergiert und es gilt}\ a_1 - a_2 \le S \le a_1
+         & \seq{a}\ \mbox{monoton fallend}, a_n \ge 0, \lim_{n \to \infty} a_n = 0                                  \\
+         & \implies S := \sum_{k=1}^\infty (-1)^{k+1} a_k \ \mbox{konvergiert und es gilt}\ a_1 - a_2 \le S \le a_1
     \end{align*}
 \end{satz}
 
 \begin{definition}{2.50}[Umordnung]
-    \[
-        \exists \phi: \N^* \to \N^*\ \left( \phi\ \mbox{bijek.,}\ a'_n = a_{\phi(n)} \right)
-        \Rightarrow
-        \sum_{n=1}^\infty a'_n\ \mbox{\textbf{Umordnung} von}\ \sum_{n=1}^\infty a_n
-    \]
+    \begin{align*}
+         & \exists \phi: \N^* \to \N^*\ \left( \phi\ \mbox{bijek.,}\ a'_n = a_{\phi(n)} \right) \\
+        \implies
+         & \sum_{n=1}^\infty a'_n\ \mbox{\textbf{Umordnung} von}\ \sum_{n=1}^\infty a_n
+    \end{align*}
 \end{definition}
 
 \begin{satz}{2.52}[Dirichlet 1837]
@@ -244,16 +245,16 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 
 \begin{satz}{2.53}[Quotientenkriterium, Cauchy 1821]
     \begin{align*}
-         & \seq{a}, a_n \ne 0\ \forall n \ge 1                                                                              \\
-         & \limsup_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} < 1 \Rightarrow \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut} \\
-         & \liminf_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} > 1 \Rightarrow \sum_{n=1}^\infty a_n\ \mbox{divergiert}
+         & \seq{a}, a_n \ne 0\ \forall n \ge 1                                                                           \\
+         & \limsup_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} < 1 \implies \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut} \\
+         & \liminf_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} > 1 \implies \sum_{n=1}^\infty a_n\ \mbox{divergiert}
     \end{align*}
 \end{satz}
 
 \begin{satz}{2.56}[Wurzelkriterium, Cauchy 1821]
     \begin{align*}
-        \limsup_{n \to \infty} \sqrt[n]{|a_n|} < 1 & \Rightarrow \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut}                  \\
-        \limsup_{n \to \infty} \sqrt[n]{|a_n|} > 1 & \Rightarrow \sum_{n=1}^\infty a_n, \sum_{n=1}^\infty |a_n|\ \mbox{divergieren}
+        \limsup_{n \to \infty} \sqrt[n]{|a_n|} < 1 & \implies \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut}                  \\
+        \limsup_{n \to \infty} \sqrt[n]{|a_n|} > 1 & \implies \sum_{n=1}^\infty a_n, \sum_{n=1}^\infty |a_n|\ \mbox{divergieren}
     \end{align*}
 \end{satz}
 
@@ -304,10 +305,10 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 \begin{definition}{3.2}
     Eine Funktion $f : D \to \R,\ D \subseteq \R$ ist
     \begin{enumerate}
-        \item \textbf{monoton wachsend}, falls $\forall x,y \in D\ \left( x \le y \Rightarrow f(x) \le f(y) \right)$
-        \item \textbf{streng monoton wachsend}, falls $\forall x,y \in D\ \left( x < y \Rightarrow f(x) < f(y) \right)$
-        \item \textbf{monoton fallend}, falls $\forall x,y \in D\ \left( x \le y \Rightarrow f(x) \ge f(y) \right)$
-        \item \textbf{streng monoton fallend}, falls $\forall x,y \in D\ \left( x < y \Rightarrow f(x) > f(y) \right)$
+        \item \textbf{monoton wachsend}, falls $\forall x,y \in D\ \left( x \le y \implies f(x) \le f(y) \right)$
+        \item \textbf{streng m. wachsend}, falls $\forall x,y \in D\ \left( x < y \implies f(x) < f(y) \right)$
+        \item \textbf{monoton fallend}, falls $\forall x,y \in D\ \left( x \le y \implies f(x) \ge f(y) \right)$
+        \item \textbf{streng m. fallend}, falls $\forall x,y \in D\ \left( x < y \implies f(x) > f(y) \right)$
         \item \textbf{monoton}, falls $f$ monoton wachsend oder monoton fallend ist.
         \item \textbf{streng monoton}, falls $f$ streg monoton wachsend oder streng monoton fallend ist.
     \end{enumerate}
@@ -315,7 +316,7 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 
 \begin{definition}{3.4}
     Sei $D \subseteq \R,\ x_o \in D$. Die funktion $f: D \to \R$ ist \textbf{in $x_0$ stetig}, falls
-    \[ \forall \epsilon > 0\ \exists \delta > 0\ \forall x \in D\ \left( \left| x - x_0 \right| < \delta \Rightarrow \left| f(x) - f(x_0) \right| < \epsilon \right) \]
+    \[ \forall \epsilon > 0\ \exists \delta > 0\ \forall x \in D\ \left( \left| x - x_0 \right| < \delta \implies \left| f(x) - f(x_0) \right| < \epsilon \right) \]
 \end{definition}
 
 \begin{definition}{3.5}
@@ -325,7 +326,7 @@ Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
 \begin{satz}{3.7}
     Sei $x_0 \in D \subseteq \R$ und $f: D \to \R$.
     $f$ ist \textit{genau dann} in $x_0$ stetig, falls für jede Folge $\seq{a}$ in $D$ folgende Implikation gilt:
-    \[ \lim_{n \to \infty} a_n = x_0 \Rightarrow \lim_{n \to \infty} f(a_n) = f(x_0) \]
+    \[ \lim_{n \to \infty} a_n = x_0 \implies \lim_{n \to \infty} f(a_n) = f(x_0) \]
 \end{satz}
 
 \begin{definition}{3.9}
