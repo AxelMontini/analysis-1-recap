@@ -1,5 +1,7 @@
 # Analysis 1 Recap (ETHZ)
 
+[![CI](https://github.com/AxelMontini/analysis-1-recap/actions/workflows/latex.yml/badge.svg)](https://github.com/AxelMontini/analysis-1-recap/actions/workflows/latex.yml)
+
 This is my Analysis 1 recap for the second Computer Science semester.
 The exam is written in German, so most of the terms used will be in that language.
 
