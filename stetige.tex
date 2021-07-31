@@ -1,0 +1,196 @@
+\section{Stetige Funktionen}
+\begin{definition}{3.1}
+    Sei $f \in \R^D$.
+    $f$ ist nach \textbf{(oben/unten) beschränkt}, falls $f(D) \subseteq \R$ nach (oben/unten) beschränkt ist.
+\end{definition}
+
+\begin{definition}{3.2}
+    Eine Funktion $f : D \to \R,\ D \subseteq \R$ ist
+    \begin{enumerate}
+        \item \textbf{monoton wachsend}, falls $\forall x,y \in D\ \left( x \le y \implies f(x) \le f(y) \right)$
+        \item \textbf{streng m. wachsend}, falls $\forall x,y \in D\ \left( x < y \implies f(x) < f(y) \right)$
+        \item \textbf{monoton fallend}, falls $\forall x,y \in D\ \left( x \le y \implies f(x) \ge f(y) \right)$
+        \item \textbf{streng m. fallend}, falls $\forall x,y \in D\ \left( x < y \implies f(x) > f(y) \right)$
+        \item \textbf{monoton}, falls $f$ monoton wachsend oder monoton fallend ist.
+        \item \textbf{streng monoton}, falls $f$ streg monoton wachsend oder streng monoton fallend ist.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}{3.4}
+    Sei $D \subseteq \R,\ x_o \in D$. Die funktion $f: D \to \R$ ist \textbf{in $x_0$ stetig}, falls
+    \[ \forall \epsilon > 0\ \exists \delta > 0\ \forall x \in D\ \left( \left| x - x_0 \right| < \delta \implies \left| f(x) - f(x_0) \right| < \epsilon \right) \]
+\end{definition}
+
+\begin{definition}{3.5}
+    Die Funktion $f: D \to \R$ ist \textbf{stetig}, falls sie in jedem Punkt von $D$ stetig ist.
+\end{definition}
+
+\begin{satz}{3.7}
+    Sei $x_0 \in D \subseteq \R$ und $f: D \to \R$.
+    $f$ ist \textit{genau dann} in $x_0$ stetig, falls für jede Folge $\seq{a}$ in $D$ folgende Implikation gilt:
+    \[ \lim_{n \to \infty} a_n = x_0 \implies \lim_{n \to \infty} f(a_n) = f(x_0) \]
+\end{satz}
+
+\begin{definition}{3.9}
+    Eine \textbf{polynomiale Funktion} $P: \R \to \R$ ist eine Funktion der Form
+    \[ P(x) = a_n x^n + ... + a_0, \quad a_0, ..., a_n \in \R \]
+    Falls $a_n \ne 0$ ist $n$ der \textbf{Grad} von $P$
+\end{definition}
+
+\begin{korollar}{3.11}
+    Seien $P, Q \ne \mathbf{0}$ poly. Funk. auf $\R$. Seien $x_1, ..., x_m$ die Nullstellen von $Q$. Dann ist die folgende Funktion stetig.
+    \[ \frac{P}{Q}: \R \setminus \left\{ x_1, ..., x_m \right\} \to \R,\quad x \mapsto \frac{P(x)}{Q(x)} \]
+\end{korollar}
+
+\begin{satz}{3.12}[Zwischenwertsatz]
+    Sei $I \subseteq \R$ ein Intervall, $f: I \to \R$ eine stetige Funktion und $a, b \in R$.
+    \[ \forall c \in \R \ \exists z \in I\ \left( f(a) \le c \le f(b) \implies a \le z \le b \right) \]
+\end{satz}
+
+\begin{korollar}{3.13}
+    Sei $P(x) = a_nx^n + ... + a_0$ ein Polynom mit $a_n \ne 0$ und $n$ ungerade.
+    Dann besitzt $P$ mindestens eine Nullstelle in $\R$.
+\end{korollar}
+
+\begin{definition}{3.16}
+    Ein intervall $I \subseteq \R$ ist \textbf{kompakt}, falls es von der Form $I = [a, b],\ a \le b$ ist.
+\end{definition}
+
+\begin{satz}{3.19}[Min-Max] Sei $f: I = [a,b] \to \R$ stetig auf einem kompakten Intervall $I$.
+    Dann gibt es $u,v \in I$ mit
+    \[ f(u) \le f(x) \le v \quad \forall x \in I \]
+    Insbesondere ist f beschränkt
+\end{satz}
+
+\begin{satz}{3.20}[Umkehrabbildung]
+    Seien $D_1,D_2 \subseteq \R$ zwei Teilmenger, $f: D_1 \to D_2$, $g: D_2 \to \R$ Funktionen und $x_0 \in D_1$.
+    Falls $f$ in $x_0$ und $g$ in $f(x_0)$ stetig sind, so ist $g \circ f: D_1 \to \R$ in $x_0$ stetig
+\end{satz}
+
+\begin{satz}{3.22}
+    Sei $I \subseteq \R$ ein Intervall und $f: I \to \R$ stetig, streng monoton.
+    Dann ist $J := f(I) \subseteq \R$ ein Intervall und $f^{-1}: J \to I$ ist stetig, streng monoton.
+\end{satz}
+
+\begin{satz}{3.24}[Exponentialfunktion]
+    $\exp: \R \to ]0,+\infty[$ ist streng monoton wachsend, stetig und surjektiv.
+\end{satz}
+
+\begin{korollar}{3.27}
+    \[
+        \exp(x) \ge 1 + x\ \forall x \in \R\ \mbox{und}\
+        \exp(x) = \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n \]
+\end{korollar}
+
+\begin{korollar}{3.28}
+    $\ln: ]0,+\infty[ \to \R$ ist eine streng monoton wachsende, stetige, bijektive Funktion.
+            $\ln(a \cdot b) = \ln(a) + \ln(b)\quad \forall a,b \in ]0,+\infty[$
+\end{korollar}
+
+\subsection{Konvergenz von Funktionenfolgen}
+\begin{definition}{3.30}[Konvergenz von Funktionenfolgen]
+    Die Funk.folge $(f_n)_{n \ge 0}$ \textbf{konvergiert punktweise} gegen eine Funktion $f: D \to \R$, falls für alle $x \in D$:
+    \[ f(x) = \lim_{n \to \infty} f_n(x) \]
+\end{definition}
+
+\begin{definition}{3.32}[Weierstrass 1841]
+    Die folge $f_n: D \to \R$ \textbf{konvergier gleichmässig} in $D$ gegen $f: D \to \R$ falls gilt
+    \[ \forall \epsilon > 0\ \exists N \ge 1\ (\forall n \ge N\ \forall x \in D : |f_n(x) - f(x)| < \epsilon ) \]
+\end{definition}
+
+\begin{satz}{3.33}
+    Sei $D \subseteq \R$ und $f_n : D \to \R$ eine Funktionenfolge bestehend aus in $D$ stetigen Funktionen die in $D$ gleichmässig eine FUnktion $f: D \to \R$ konvergiert.
+    Dann ist $f$ in $D$ auch stetig.
+\end{satz}
+
+\begin{definition}{3.34}
+    Eine Funktionenfolge $f_n$ ist \textbf{gleichmässig konvergent} falls für alle $x \in D$ der Grenzwert $f(x) := \lim_{n \to \infty} f_n(x)$
+    existiert und die Folge $(f_n)_{n \ge 0}$ gleichmässig gegen $f$ konvergiert.
+\end{definition}
+
+\begin{definition}{3.37}
+    Die Reihe $\sum_{k=0}^\infty f_k(x)$ konvergiert gleichmässig in $D$ falls die durch $S_n(x) = \sum_{k=0}^n f_k(x)$ definierte
+    Funktionenfolge gleichmässig konvergiert.
+\end{definition}
+
+\begin{satz}{3.38}
+    Sei $D \subseteq \R$ und $f_n : D \to \R$ eine Folge stetiger Funktionen. Wir nehmen an, dass $|f_n(x)| \le c_n\ \forall x \in D$
+    und, dass $\sum_{n=0}^\infty c_n$ konvergiert. Dann konvergiert die Reihe $\sum_{n=0}^\infty f_n(x)$ gleichmässig in $D$ und deren Grenzwert
+    \[ f(x) := \sum_{n=0}^\infty f_n(x) \]
+    ist eine in $D$ stetige Funktion.
+\end{satz}
+
+\begin{definition}{3.39}
+    Die Potenzreihe $\sum_{k=0}^\infty c_k x^k$ hat \textbf{positiven Konvergenzradius} falls $\underset{k \to \infty}{\limsup} \sqrt[k]{|c_k|}$ existiert.
+    Der Konvergenzradius ist dann definiert als:
+    \begin{align*}
+        \rho = \begin{cases}
+            +\infty                                                    & \mbox{falls}\ \underset{k \to \infty}{\limsup} \sqrt[k]{|c_k|} = 0 \\
+            \frac{1}{\underset{k \to \infty}{\limsup} \sqrt[k]{|c_k|}} & \mbox{falls}\ \underset{k \to \infty}{\limsup} \sqrt[k]{|c_k|} > 0
+        \end{cases}
+    \end{align*}
+\end{definition}
+
+\begin{satz}{3.40}
+    Sei $\sum_{k=0}^\infty c_k x^k$ eine Potenzreihe mit positiven Konvergenzradius $\rho > 0$ und sei
+    $f(x) := \sum_{k = 0}^\infty c_k x^k,\ |x| < \rho$.
+
+    Dann gilt: $\forall 0 \le r < \rho$ konvergiert
+    \[ \sum_{k=0}^\infty c_k x^k \]
+    gleichmässig auf $[-r, r]$, insbesondere ist $f: ]-\rho, \rho[ \to \R$ stetig.
+\end{satz}
+
+\subsection{Trigonometrische Funktionen}
+
+\begin{satz}{3.42}
+    \begin{enumerate}
+        \item $\exp iz = \cos(z) + i \sin(z)\quad \forall z \in \C$
+        \item $\cos z = \cos(-z)$ und $\sin(-z) = \sin(z)\quad \forall z \in C$
+        \item $\sin z = \frac{e^{iz} - e^{-iz}}{2i},\ \cos z = \frac{e^{iz} + e^{-iz}}{2}$
+        \item $\sin(z + w) = \sin(z)\cos(w) + \cos(z)\sin(w)$ und $\cos(z + w) = \cos(z)\cos(w) - \sin(z)\sin(w)$
+        \item $\cos(z)^2 + \sin(z)^2 = 1\quad \forall z \in \C$
+    \end{enumerate}
+\end{satz}
+
+\begin{korollar}{3.43}
+    \begin{align*}
+         & \sin(2z) = 2\sin(z)\cos(z)       \\
+         & \cos(2z) = \cos(z)^2 - \sin(z)^2
+    \end{align*}
+\end{korollar}
+
+\begin{satz}{3.44}
+    $\pi := \left\{ t > 0 : \sin t = 0 \right\}$ \dots
+\end{satz}
+
+\begin{satz}{}
+    \begin{alignat*}{2}
+        \sin(x) & = \sum_{n = 0}^\infty \frac{(-1)^n x^{2n + 1}}{(2n + 1)!} & = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + ... \\
+        \cos(x) & = \sum_{n = 0}^\infty \frac{(-1)^n x^{2n}}{(2n)!}         & = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + ...
+    \end{alignat*}
+\end{satz}
+
+\subsection{Grenzwerte}
+
+\begin{definition}{3.47}
+    $x_0 \in \R$ ist ein \textbf{Häufungspunkt} der Menge $D$ falls $\forall \delta > 0$:
+    \[ (]x_0 - \delta, x_0 + \delta[ \setminus \{x_0\}) \cap D \ne \emptyset \]
+\end{definition}
+
+\begin{definition}{3.49}
+    Sei $f: D \to \R$, $x_0 \in \R$ ein Häufungspunkt von $D$. Dann ist $A \in \R$ der Grenzwert von $f(x)$ für $x \to x_0$, bezeichnet mit
+    \[ " \lim_{x \to x_0} f(x) = A " \]
+    falls $\forall \epsilon > 0\ \exists \delta > 0$ so dass
+    \[ \forall x \in D \cap \left(  ]x_0 - \delta, x_0 + \delta[ \setminus \{x_0\}  \right) : |f(x) - A| \le \epsilon \]
+\end{definition}
+
+\begin{satz}{3.52}
+    $D, E \subseteq \R$, $x_0$ Häufungspunkt von $D$, $f: D \to E$ eine Funktion, $y_0 := \lim_{x \to x_0} f(x)$ existiert und $g: E \to \R$ stetig in $y_0$ ist.
+    Dann \[ \lim_{x \to x_0} g(f(x)) = g(y_0) \]
+\end{satz}
+
+\begin{definition}{}[Linksseitige und rechtsseitige Grenzwerte]
+    \[ \lim_{x \to x_0^+} f(x) \quad \forall \epsilon\ \exists \delta,\ \forall x \in D \cap ]x_0, x_0 + \delta[: \dots \]
+    Analogous for $\lim_{x \to x_0^-} f(x)$.
+\end{definition}
+

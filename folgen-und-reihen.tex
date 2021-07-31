@@ -1,0 +1,224 @@
+\section{Folgen und Reihen}
+\subsection{Folgen}
+\begin{definition}{2.4}
+    \[
+        \left\{ n \in \N : a_n \notin \left] l - \epsilon, l + \epsilon \right[ \right\} \implies \seq{a}\ \mbox{heisst \textbf{konvergent}}
+    \]
+\end{definition}
+
+\begin{definition}{2.4+}
+    Grenzwert oder Limes der Folge: $\underset{n \to \infty}{\lim} a_n$
+\end{definition}
+
+\begin{lemma}
+    Equivalent Aussagen:
+    \begin{enumerate}
+        \item $\seq{a}$ konvergiert gegen $l = \lim_{n \to \infty} a_n$
+        \item $\forall \epsilon > 0\ \exists N \ge 1\ \left( \lvert a_n - l \rvert < \epsilon \quad \forall n \ge N \right)$
+    \end{enumerate}
+\end{lemma}
+
+\begin{satz}{2.8}
+    Konvergente Folgen $\seq{a},\ \seq{b},\ a = \lim_{n \to \infty} a_n,\ b = \lim_{n \to \infty} b_n$
+    \begin{enumerate}
+        \item $(a_n + b_n)_{n \ge 1}$ auch konvergent und $a + b = \lim_{n \to \infty} (a_n + b_n)$
+        \item $(a_n \cdot b_n)_{n \ge 1}$ konvergiert und $a \cdot b = \lim \dots$
+        \item $\forall n \ge 1\ (b_n \ne 0)$ and $b \ne 0$. Dann $\left(\frac{a_n}{b_n}\right)_{n \ge 1}$ konvergent und $\frac{a}{b} = \lim \dots$
+        \item $\exists K \ge 1\ \left(\forall n \ge K\ (a_n \le b_n)\right) \implies a \le b$
+    \end{enumerate}
+\end{satz}
+
+\begin{definition}{2.10}
+    \[\forall n \ge 1\ (a_n \le a_{n + 1}) \implies \seq{a} \mbox{ist \textbf{monoton wachsend}}\]
+    \[\forall n \ge 1\ (a_n \ge a_{n + 1}) \implies \seq{a} \mbox{ist \textbf{monoton fallend}}\]
+\end{definition}
+
+\begin{satz}{2.11}[Weierstrass]
+    \begin{itemize}
+        \item $\seq{a}$ ist monoton wachsend und nach oben beschränkt. Dann konvergiert es mit \[ \lim_{n \to \infty} a_n = \sup \left\{ a_n : n \ge 1 \right\} \]
+        \item $\seq{a}$ ist monoton fallend und nach unten beschränkt. Dann konvergiert es mit \[ \lim_{n \to \infty} a_n = \inf \left\{ a_n : n \ge 1 \right\} \]
+    \end{itemize}
+\end{satz}
+
+\begin{lemma}{}[Bernoulli Ungleichung]
+    $(1 + x)^n \ge 1 + nx\ \forall n \in \N,\ x > -1$
+\end{lemma}
+
+\begin{definition}[Limes superior und limes inferior]
+    Folge $\seq{a}$ + Weierstrass, definiert man zwei monotone Folgen $\seq{b}$ und $\seq{c}$.
+    Fuer jedes $n \ge 1$: $b_n = \inf \left\{ a_k : k \ge n \right\}$ und $c_n = \sup \left\{ a_k : k \ge n \right\}$.
+    Dann folgt aus Korollar \ref{korollar:inf-sup}:
+    $b_n \le b_{n + 1}\ \forall n \ge 1$ und $c_n \ge c_{n + 1}\ \forall n \ge 1$ (beide konvergieren).
+
+    \begin{itemize}
+        \item Limes inferior: $\underset{n \to \infty}{\lim \inf} a_n := \lim_{n \to \infty} b_n$
+        \item Limes superior: $\underset{n \to \infty}{\lim \sup} a_n := \lim_{n \to \infty} c_n$
+    \end{itemize}\
+
+    Aus $b_n \le c_n$ folgt $\liminf_{n \to \infty} a_n \le \limsup_{n \to \infty} a_n$
+\end{definition}
+
+\begin{lemma}{2.19}
+    \[
+        \seq{a}\ \mbox{konv.} \iff \seq{a}\ \mbox{besch. und}\ \liminf_{n \to \infty} a_n = \limsup_{n \to \infty} a_n
+    \]
+\end{lemma}
+
+\begin{satz}{2.20}[Cauchy Criterium]
+    \label{satz:cauchy-criterium-folge}
+    \[ \seq{a}\ \mbox{konvergent} \iff \forall \epsilon > 0\
+        \exists N \ge 1\ \left( \forall n,m \ge N \left( \lvert a_n - a_m \rvert < \epsilon \right) \right) \]
+\end{satz}
+
+\begin{definition}{2.21}
+    \par Abgeschlossenes Intervall (Teilmenge $I \subseteq \R$)
+    Form $[a,b]$ oder $[a, +\infty[$ oder $]-\infty, a]$ oder $]-\infty, +\infty[$ mit $a \le b,\ a,b \in \R$.
+
+    Laenge der intervalls: $\mathcal{L}(I) = b - a$ in Fall 1, $\mathcal{L}(I) = +\infty$ anderfalls.
+\end{definition}
+
+\begin{satz}{2.25}[Cauchy-Cantor]
+    \label{satz:cauchy-cantor}
+    $I_1 \supseteq I_2 \supseteq \dots \supseteq I_n \supseteq I_{n + 1} \dots$ Folge abgeschlossener Intervalle mit $\mathcal{L}(I_1) < +\infty$.
+    Dann gilt $\bigcap_{n \ge 1} I_n \ne \emptyset$.
+
+    Falls $\underset{n \to \infty}{\lim} \mathcal{L}(I_n) = 0$ enthaelt $\bigcap_{n \ge 1} I_n$ genau einer punkt.
+\end{satz}
+
+\begin{definition}{2.27}[Teilfolge]
+    Eine Teilfolge von $\seq{a}$ ist $\seq{b}$ wobei $b_n = a_{l(n)}$ und $l: \N^* \to \N^*$ satisfies $l(n) \le l(n + 1)\ \forall n \ge 1$
+\end{definition}
+
+\begin{satz}{2.29}[Bolzano-Weierstrass]
+    \label{satz:bolzano-weierstrass}
+    Jede beschraenkte Folge besitzt eine konvergente Teilfolge.
+\end{satz}
+
+\subsection{Reihen}
+Sei $\seq{a}$ eine Folge in $\R$ oder $\mathbb{C}$. Der Begriff der Konvergenz der Reihe $\sum_{k = 1}^{\infty} a_k$ stuetzt sich auf die
+Folge $\seq{S}$ der Partialsummen $\sum_{k = 1}^n a_k$
+
+\begin{definition}{2.37}
+    Die reihe $\sum_{k = 1}^{\infty} a_k$ ist \textbf{konvergent}, falls die Folge $\seq{S}$ der Partialsummen konvergiert.
+    Definieren wir $\sum_{k = 1}^{\infty} a_k := \lim_{n \to \infty} S_n$
+\end{definition}
+
+\begin{satz}{2.40}
+    Seien $\sum_{k=1}^{\infty} a_k$ und $\sum_{j=1}^{\infty} b_j$ konvergent, sowie $\alpha \in \mathbb{C}$.
+    Dann:
+    \begin{enumerate}
+        \item $\sum_{k=1}^{\infty} (a_k + b_k) = \left( \sum_{k=1}^{\infty} a_k \right) + \left( \sum_{j=1}^{\infty} b_j \right)$ ist konvergent.
+        \item $\sum_{k=1}^{\infty} \alpha \cdot a_k = \alpha \cdot \sum_{k=1}^{\infty} a_k$ ist konvergent.
+    \end{enumerate}
+\end{satz}
+
+\begin{satz}{2.41}
+    \label{satz:cauchy-criterium-reihe}
+    \par Cauchy Criterium, konvergente Reihe
+    \[
+        \sum_{k=1}^\infty a_k\ \mbox{konvergent}
+        \iff
+        \forall \epsilon > 0\ \exists N \ge 1\ \left( \left| \sum_{k=n}^m a_k \right| < \epsilon,\ \forall m \ge n \ge N \right)
+    \]
+\end{satz}
+
+\begin{satz}{2.42}
+    \[
+        (a_k \ge 0\ \forall k \in \N^*)
+        \quad
+        \sum_{k=1}^\infty a_k\ \mbox{konvergent}
+        \iff
+        \seq{S}\ \mbox{nach oben beschr.}
+    \]
+\end{satz}
+
+\begin{korollar}{2.43}[Vergleichssatz]
+    \begin{align*}
+        b_k \ge a_k \ge 0\ \forall k \ge 1 \\
+        \implies \begin{cases}
+            \sum_{k=1}^\infty b_k\ \mbox{konvergent} & \implies \sum_{k=1}^\infty a_k\ \mbox{konvergent} \\
+            \sum_{k=1}^\infty a_k\ \mbox{divergent}  & \implies \sum_{k=1}^\infty b_k\ \mbox{divergent}
+        \end{cases}
+    \end{align*}
+\end{korollar}
+
+\begin{definition}{2.45}
+    \[ \sum_{k=1}^\infty \left| a_k \right|\ \mbox{konvergiert} \implies  \sum_{k=1}^\infty a_k\ \mbox{\textbf{konvergiert absolut}} \]
+\end{definition}
+
+\begin{satz}{2.46}
+    Eine absolut kovergente Reihe ist auch konvergent und es gilt $\left| \sum_{k=1}^\infty a_k \right| \le \sum_{k=1}^\infty \left| a_k \right|$
+\end{satz}
+
+\begin{satz}{2.48}[Leibniz 1682]
+    \begin{align*}
+         & \seq{a}\ \mbox{monoton fallend}, a_n \ge 0, \lim_{n \to \infty} a_n = 0                                  \\
+         & \implies S := \sum_{k=1}^\infty (-1)^{k+1} a_k \ \mbox{konvergiert und es gilt}\ a_1 - a_2 \le S \le a_1
+    \end{align*}
+\end{satz}
+
+\begin{definition}{2.50}[Umordnung]
+    \begin{align*}
+         & \exists \phi: \N^* \to \N^*\ \left( \phi\ \mbox{bijek.,}\ a'_n = a_{\phi(n)} \right) \\
+        \implies
+         & \sum_{n=1}^\infty a'_n\ \mbox{\textbf{Umordnung} von}\ \sum_{n=1}^\infty a_n
+    \end{align*}
+\end{definition}
+
+\begin{satz}{2.52}[Dirichlet 1837]
+    Falls $\sum_{n=1}^\infty a_n$ absolut konvergiert, denn konvergiert jede Umordnung der Reihe und hat denselben Grenzwert.
+\end{satz}
+
+\begin{satz}{2.53}[Quotientenkriterium, Cauchy 1821]
+    \begin{align*}
+         & \seq{a}, a_n \ne 0\ \forall n \ge 1                                                                           \\
+         & \limsup_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} < 1 \implies \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut} \\
+         & \liminf_{n \to \infty} \frac{|a_{n+1}|}{|a_n|} > 1 \implies \sum_{n=1}^\infty a_n\ \mbox{divergiert}
+    \end{align*}
+\end{satz}
+
+\begin{satz}{2.56}[Wurzelkriterium, Cauchy 1821]
+    \begin{align*}
+        \limsup_{n \to \infty} \sqrt[n]{|a_n|} < 1 & \implies \sum_{n=1}^\infty a_n\ \mbox{konvergiert absolut}                  \\
+        \limsup_{n \to \infty} \sqrt[n]{|a_n|} > 1 & \implies \sum_{n=1}^\infty a_n, \sum_{n=1}^\infty |a_n|\ \mbox{divergieren}
+    \end{align*}
+\end{satz}
+
+\begin{korollar}{2.57}
+    $\sum_{k=0}^\infty c_k z^k$ konvergiert absolut fuer alle $|z| < \rho$ und divergiert fuer alle $|z| > \rho$,
+    mit $\rho := \left( \limsup_{k \to \infty} \sqrt[k]{|c_k|} \right)$ (oder $\rho = +\infty$ wenn denominatore 0).
+\end{korollar}
+
+\begin{korollar}{}
+    Die zeta funktion konvergiert, $\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}$
+\end{korollar}
+
+\begin{definition}{2.58}
+    $\sum_{k=0}^\infty b_k$ ist eine \textbf{lineare Anordnung} der Doppelreihe $\sum_{i,j \ge 0} a_{ij}$ falls es
+    eine Bijektion $\sigma : \N \to \N \times \N$ gibt mit $b_k = a_{\sigma(k)}$
+\end{definition}
+
+\begin{satz}{2.59}[Cauchy 1821]
+    Wir nehmen an dass $\exists B \ge 0$ so dass
+    \[ \sum_{i=0}^m \sum_{j=0}^m |a_{ij}| \le B\ \forall m \ge 0 \]
+    Dann konvergieren absolut:
+    \[
+        S_i := \sum_{j=0}^\infty a_{ij}\ \forall i \ge 0,
+        U_j := \sum_{i=0}^\infty a_{ij}\ \forall j \ge 0,
+        \sum_{i=0}^\infty S_i,
+        \sum_{j=0}^\infty U_j,
+    \]
+    und es gilt $\sum_{j=0}^\infty U_j = \sum_{i=0}^\infty S_i$.
+    Jede lineare Anordnung der Doppelreihe konvergiert absolut, mit selbem Grenzwert.
+\end{satz}
+
+\begin{definition}{2.60}
+    Das \textbf{Cauchy Produkt} der Reihen $\sum_{i=0}^\infty a_i, \sum_{j=0}^\infty b_j$
+    ist die Reihe
+    \[ \sum_{n=0}^\infty \left( \sum_{j=0}^\infty a_{n-j} \cdot b_j \right) = a_0b_0 + (a_0b_1 + a_1b_0) + (a_0b_2 + a_1b_1 + a_2b_0) + ... \]
+\end{definition}
+\begin{satz}{2.62}
+    Falls zwei Reihen absolut konvergieren, so konvergiert ihr Cauchy Produkt und es gilt
+    \[ \sum_{n=0}^\infty \left( \sum_{j=0}^\infty a_{n-j} \cdot b_j \right) = \left( \sum_{i=0}^\infty a_i \right) \left( \sum_{j=0}^\infty b_j \right)\]
+\end{satz}
+

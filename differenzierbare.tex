@@ -1,0 +1,131 @@
+\section{Differenzierbare Funktionen}
+
+\begin{definition}{4.1}
+    $f$ ist \textbf{in $x_0$ differenzierbar} falls der Grenzwert
+    \[ f'(x_0) = \lim_{x \to x_0} \frac{f(x) - f(x_0)}{x - x_0} \]
+    existiert.
+\end{definition}
+
+\begin{satz}{4.3}[Weierstrass 1861]
+    Sei $f: D \to \R$, $x_0 \in D$ Häufungspunkt von $D$. Folgende Aussagen sind äquivalent:
+    \begin{enumerate}
+        \item $f$ ist in $x_0$ differenzierbar
+        \item Es gibt $c \in \R$ und $r: D \to \R$ mit:
+              \begin{enumerate}
+                  \item $f(x) = f(x_0) + c(x - x_0) + r(x)(x - x_0)$
+                  \item $r(x_0) = 0$ und $r$ ist stetig in $x_0$.
+              \end{enumerate}
+    \end{enumerate}
+
+    Falls dies zutrifft ist $c = f'(x_0)$ eindetig bestimmt
+\end{satz}
+
+\begin{satz}{4.7}
+    $f: D \to \R$ ist \textbf{in $D$ differenzierbar}, falls für jeden Häufungspunkt $x_0 \in D$, $f$ in $x_0$ differenzierbar ist.
+\end{satz}
+
+\begin{satz}{4.9}
+    $D \subseteq \R$, $x_0 \in D$ Häufungspunkt von $D$ und $f,g: D \to \R$ in $x_0$ differenzierbar.
+    Dann
+    \begin{enumerate}
+        \item $f+g$ in $x_0$ differenzierbar und $(f + g)'(x_0) = f'(x_0) + g'(x_0)$
+        \item $f \cdot g$ in $x_0$ differenzierbar und $(f \cdot g)'(x_0) = f'(x_0)g(x_0) + f(x_0)g'(x_0)$
+        \item Falls $g(x_0) \ne 0$ ist $\frac{f}{g}$ in $x_0$ differenzierbar und
+              $\left( \frac{f}{g} \right)'(x_0) = \frac{f'(x_0)g(x_0) - f(x_0)g'(x_0)}{g(x_0)^2}$
+    \end{enumerate}
+\end{satz}
+
+\begin{satz}{4.11}
+    Seien $D, E \subseteq R$ und sei $x_0 \in D$ ein Häufungspunkt. Sei $f: D \to E$ in $x_0$ differenzierbar
+    so dass $y_0 := f(x_0)$ ein Häufungspunkt von $E$ ist und sei $g: E \to \R$ in $y_0$ differenzierbar.
+
+    Dann ist $g \circ f: D \to \R$ in $x_0$ differenzierbar und
+    \[ (g \circ f)'(x_0) = g'(f(x_0))f'(x_0) \]
+\end{satz}
+
+\subsection{Zentrale Sätze}
+
+\begin{definition}{4.14}
+    $f: D \to \R$, $D \subseteq \R$ und $x_0 \in D$
+    \begin{enumerate}
+        \item $f$ besitzt ein lokales Maximum in $x_0$ falls
+              \[
+                  \exists \delta > 0\ \forall x \in ]x_0 - \delta, x_0 + \delta[ \cap D\ \left( f(x) \le f(x_0) \right)
+              \]
+        \item $f$ besitzt ein lokales Minimum in $x_0$ falls
+              \[
+                  \exists \delta > 0\ \forall x \in ]x_0 - \delta, x_0 + \delta[ \cap D\ \left( f(x) \ge f(x_0) \right)
+              \]
+        \item $f$ besitzt ein \textbf{lokales Extremum} in $x_0$ falls es entweder ein lokales Minimum oder Maximum von $f$ ist.
+    \end{enumerate}
+\end{definition}
+
+\begin{satz}{4.16}[Rolle 1690]
+    $f: [a, b] \to \R$ stetig und in $]a, b[$ differenzierbar.
+            \[ f(a) = f(b) \implies \exists \xi \in ]a, b[\ \left( f'(\xi) = 0 \right) \]
+\end{satz}
+
+\begin{satz}{4.17}[Lagrange 1797]
+    $f: [a, b] \to \R$ stetig und in $]a, b[$ differenzierbar. Dann gibt es $\xi \in ]a, b[$ mit
+    \[ f(b) - f(a) = f'(\xi)(b - a) \]
+\end{satz}
+
+\begin{satz}{4.22}[Cauchy]
+    $f,g : [a,b] \to \R$ stetig und in $]a, b[$ differezierbar.
+                    Dann gibt es $\xi \in ]a, b[$ mit
+                    \[ g'(\xi)(f(b) - f(a)) = f'(\xi)(g(b) - g(a)) \]
+
+                    falls $g'(x) \ne 0\ \forall x \in ]a, b[$ folgt
+    \begin{align*}
+         & g(a) \ne g(b)                                             \\
+         & \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(\xi)}{g'(\xi)}
+    \end{align*}
+\end{satz}
+
+\begin{satz}{4.23}[l'Hôpital 1696]
+    $f,g: ]a, b[ \to \R$ differenzierbar mit $g'(x) \ne 0\ \forall x \in ]a, b[$.
+    Falls
+    \[ \lim_{x \to b^-} f(x) = 0,\quad \lim_{x \to b^-} g(x) = 0 \]
+    und
+    \[ \lim_{x \to b^-} \frac{f'(x)}{g'(x)} =: \lambda \]
+    existiert, folgt
+    \[ \lim_{x \to b^-} \frac{f(x)}{g(x)} = \lambda \]
+\end{satz}
+
+\begin{definition}{4.26}
+    \begin{enumerate}
+        \item $f$ ist \textbf{konvex} auf $I$ falls für alle $x \le y,\ x,y \in I$ und $\lambda \in [0,1]$
+              \[ f(\lambda x + (1 - \lambda)y) \le \lambda f(x) + (1 - \lambda)f(y) \]
+              gilt.
+        \item $f$ ist \textbf{streng konvex} auf $I$ falls für alle $x < y,\ x,y \in I$ und $\lambda \in [0,1]$
+              \[ f(\lambda x + (1 - \lambda)y) < \lambda f(x) + (1 - \lambda)f(y) \]
+              gilt.
+    \end{enumerate}
+\end{definition}
+
+\begin{satz}{4.29}
+    $f: ]a, b[ \to \R$ in $]a, b[$ differenzierbar. $f$ ist genau dann (streng) konvex, falls $f'$ (streng) monoton wachsend ist.
+\end{satz}
+
+\subsection{Höhere Ableitungen}
+
+\begin{definition}{4.32}
+    \begin{enumerate}
+        \item Für $n \ge 2$ ist $f$ \textbf{n-mal differenzierbar in $D$} falls $f^{(n-1)}$ in $D$ differenzierbar ist.
+              Dann ist $f^(n) := (f^{(n - 1)})'$ und nennt sich die n-te Ableitung von $f$.
+        \item Die funktion $f$ ist \textbf{n-mal stetig differenzierbar in $D$}, falls die n-mal differenzierbar ist und falls $f^{(n)}$ in $D$ stetig ist.
+        \item Die funktion $f$ ist in $D$ \textbf{glatt}, falls sie $\forall n \ge 1$ n-mal differenzierbar ist.
+    \end{enumerate}
+\end{definition}
+
+\begin{satz}{4.34}
+    $f,g: D \to \R$ n-mal differenzierbar in $D$, dann:
+    \begin{enumerate}
+        \item $f + g$ n-mal diff. ist und $(f + g)^{(n)} = f^{(n)} + g^{(n)}$
+        \item $f \cdot g$ n-mal diff. ist und
+              \[ (f \cdot g)^{(n)} = \sum_{k=0}^n \binom{n}{k} f^{(k)}g^{(n - k)} \]
+    \end{enumerate}
+\end{satz}
+
+\subsection{Taylor}\todo[inline]{Maybe?}
+
