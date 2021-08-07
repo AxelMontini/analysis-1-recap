@@ -127,5 +127,29 @@
     \end{enumerate}
 \end{satz}
 
-\subsection{Taylor}\todo[inline]{Maybe?}
+\subsection{Taylor}
 
+\begin{satz}{4.39}
+    Seien $f_n: ]a, b[ \to \R$ eine Funk.folge wobei $f_n$ einmal in $]a,b[$ stetig differenzierbar ist $\forall n \ge 1$.
+    Wir nehmen an, dass sowohl die Folge $\seq{f}$ wie $\seq{f'}$ gleichmässig in $]a, b[$ konvergieren
+    (siehe Def. 3.34) mit $\lim_{n \to \infty} f_n =: f$ und $\lim_{n \to \infty} f'_n =: p$.
+
+    Dann ist $f$ stetig differenzierbar und $f' = p$.
+\end{satz}
+
+\begin{satz}{4.40}
+    Sei $f: [a,b] \to \R$ stetig und in $]a, b[$ $(n+1)$-mal differenzierbar. Für jedes
+                $a < x \le b$ gibt es $\xi \in ]a, x[$ mit:
+    \[ f(x) = \sum_{k = 0}^n \frac{f^{(k)}(a)}{k!} (x - a)^k + \frac{f^{(n + 1)}(\xi)}{(n + 1)!}(x - a)^{n + 1}\]
+\end{satz}
+
+\begin{korollar}{4.44}[Taylor Approximation]
+    Sei $f: [c, d] \to \R$ stetig und in $]c, d[$ $(n+1)$-mal differenzierbar. Sei $c < a < d$. Für
+    alle $x \in [c, d]$ gibt es $\xi$ zwischen $x$ und $a$ so dass
+    \[ f(x) = \sum_{k = 0}^n \frac{ f^{(k)}(a) }{ k! } (x - a)^k + \frac{f^{(n+1)}(\xi)}{(n+1)!}(x - a)^{n + 1}\]
+\end{korollar}
+
+\begin{satz}{Boh}[Simpler?]
+    Ignoring $\xi$.
+    \[ f(x) = \sum_{n = 0}^\infty \frac{f^{(n)}(a)}{n!}{x - a}^n \]
+\end{satz}
