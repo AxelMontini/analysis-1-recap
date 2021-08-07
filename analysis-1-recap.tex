@@ -1,6 +1,7 @@
 \documentclass[8pt,a4paper,twocolumn,table]{extarticle}
 \usepackage[table]{xcolor}
 \usepackage{mathtools}
+\usepackage{multirow}
 \usepackage{amsfonts}
 \usepackage{amsthm}
 \usepackage{amssymb}
@@ -17,10 +18,15 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
 
+\DeclareMathOperator{\arccot}{arccot}
 \DeclareMathOperator{\acosh}{acosh}
 \DeclareMathOperator{\asinh}{asinh}
 \DeclareMathOperator{\atanh}{atanh}
 
+% Math column
+\newcolumntype{M}{>{$\displaystyle}c<{$}}
+\newcolumntype{L}{>{$\displaystyle}l<{$}}
+\newcolumntype{R}{>{$\displaystyle}r<{$}}
 
 \newtheorem{innercustomgeneric}{\customgenericname}
 \providecommand{\customgenericname}{}
@@ -86,6 +92,37 @@
     \[ (x + y)^n = \sum_{k=0}^n \binom{n}{k} x^k y^{n - k} \]
 \end{satz}
 
+\section{Limit Cheat Sheet}
+\[ x \in \R,\quad a,b \in \R^+,\quad n \in \N \]
+{\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{| M | M |}
+    \hline
+    \lim_{n \to \infty} a^n = +\infty\ \mbox{if}\ a > 1
+                                                               &
+    \lim_{n \to \infty} a^n = 0\ \mbox{if}\ 0 < a < 1            \\
+    \lim_{n \to \infty} \sqrt[n]{n} = 1
+                                                               &
+    \lim_{n \to \infty} \sqrt[n]{a}\ \mbox{if}\ a > 0
+    \\
+    \lim_{n \to \infty} \left( 1 + \frac{x}{n} \right)^n = e^x &
+    \\
+    \hline
+    \lim_{x \to 0} \frac{\sin x}{x} = 1
+                                                               &
+    \lim_{x \to 0} \frac{\tan x}{x} = 1
+    \\
+    \hline
+    \lim_{x \to \infty} \frac{\ln^b(x)}{x^a} = 0
+                                                               &
+    \lim_{x \to 0} x^a \ln^b(x) = 0
+    \\
+    \lim_{x \to \infty} \frac{e^{ax}}{x^b} = +\infty
+                                                               &
+    \lim_{x \to \infty} \frac{x^b}{e^{ax}} = 0                   \\
+    \hline
+\end{tabular}}
+
+
 \section{Derivative Cheat Sheet}
 
 Properties
@@ -94,75 +131,98 @@ Properties
      & (fg)' = f'g + fg'   & (\frac{f}{g})' = \frac{f'g - fg'}{g^2}             \\
      & \frac{d}{dx}(c) = 0 & \frac{d}{dx}\left( g(f(x)) \right) = g'(f(x))f'(x)
 \end{alignat*}
-
-\begin{tabular}{|c | c |}
+{\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{| R | L |}
     \hline
-    \rowcolor{lightgray} $f(x)$ & $f'(x)$                       \\
+    \rowcolor{lightgray} f(x)      & f'(x)                                                    \\
     \hline
-    $x$                         & $1$                           \\
+    x                              & 1                                                        \\
+    x^n                            & nx^{n-1}                                                 \\
+    e^x                            & e^x                                                      \\
+    a^x                            & a^x \ln a                                                \\
+    \sqrt{x}                       & \frac{1}{2\sqrt{x}},\ x \ne 0                            \\
+    \frac{1}{x}                    & -\frac{1}{x^2}                                           \\
+    |x|                            & x > 0 \implies 1,\ \mbox{or}\ x < 0 \implies -1, x \ne 0 \\
+    \ln(x)                         & \frac{1}{x}                                              \\
+    \log_a(x) = \frac{1}{x \ln(a)} &                                                          \\
+    \hline % trig
+    \sin(x)                        & \cos(x)                                                  \\
+    \cos(x)                        & -\sin(x)                                                 \\
+    \tan(x)                        & \frac{1}{\cos^2(x)} = 1 + \tan^2(x)                      \\
+    \cot(x)                        & - \frac{1}{\sin^2(x)} = -1 - \cot^2(x)                   \\
+    \arcsin x                      & \frac{1}{\sqrt{1 - x^2}}                                 \\
+    \arccos x                      & -\frac{1}{\sqrt{1 - x^2}}                                \\
+    \arctan x                      & \frac{1}{1 + x^2}                                        \\
+    \arccot(x)                     & - \frac{1}{1 + x^2}                                      \\
+    \hline % hyperb
+    \sinh(x)                       & \cosh(x)                                                 \\
+    \cosh(x)                       & \sinh(x)                                                 \\
+    \tanh(x)                       & \frac{1}{\cosh^2(x)} = 1 - \tanh^2(x)                    \\
+    \coth(x)                       & -\frac{1}{\sin^2(x)} = 1 - \coth^2(x)                    \\
+    \asinh(x)                      & \frac{1}{\sqrt{x^2 + 1}}                                 \\
+    \acosh(x)                      & \frac{1}{\sqrt{x^2 - 1}}                                 \\
+    \atanh(x)                      & \frac{1}{1 - x^2}                                        \\
     \hline
-    $x^n$                       & $nx^{n-1}$                    \\
-    \hline
-    $\sin x$                    & $\cos x$                      \\
-    \hline
-    $ \cos x $                  & $ -\sin x $                   \\
-    \hline
-    $ \tan x $                  & $ \sec^2 x $                  \\
-    \hline
-    $ \sec x $                  & $ \sec x \tan x $             \\
-    \hline
-    $ \csc x $                  & $ -\csc x \cot x$             \\
-    \hline
-    $ \cot x $                  & $ -\csc^2 x $                 \\
-    \hline
-    $ \arcsin x$                & $ \frac{1}{\sqrt{1 - x^2}} $  \\
-    \hline
-    $ \arccos x$                & $ -\frac{1}{\sqrt{1 - x^2}} $ \\
-    \hline
-    $ \arctan x$                & $ \frac{1}{1 + x^2} $         \\
-    \hline
-    $ a^x $                     & $ a^x \ln(a) $                \\
-    \hline
-    $ e^x $                     & $ e^x $                       \\
-    \hline
-    $ \ln(x) $                  & $ \frac{1}{x},\ x > 0 $       \\
-    \hline
-    $ \ln(|x|) $                & $ \frac{1}{x},\ x \ne 0 $     \\
-    \hline
-    $ \log_a(x) $               & $ \frac{1}{x \ln a},\ x > 0 $ \\
-\end{tabular}
+\end{tabular}}
 
 \section{Integral Cheat Sheet}
 
 \[ \int f(x)dx = F(x) + C \]
 
-\begin{tabular}{| c | c |}
+\begin{tabular}{| l | L |}
     \hline
-    \rowcolor{lightgray} $f(x)$ & $F(X)$ (without $+ C)$               \\
+    Per parti                                                                & \int f'(x)g(x)dx = f(x)g(x) - \int f(x)g'(x)dx        \\
     \hline
-    $x^s$                       & $\frac{x^{s + 1}}{s + 1},\ s \ne -1$ \\
+    \multicolumn{1}{|p{2.2cm}|}{Per sostituzione immediata}                  & \int g(f(x))f'(x)dx = G(f(x)) + C                     \\
     \hline
-    $x^s$                       & $\ln x,\ x \ge 0$                    \\
+    \multicolumn{1}{|p{2.2cm}|}{Per sostituzione (cambiamento di variabile)} & \int g(x)dx = \int g(f(t)) f'(t) dt                   \\
+                                                                             & \mbox{with}\ x = f(t)                                 \\
     \hline
-    $e^x$                       & $e^x$                                \\
-    \hline
-    $\sin x$                    & $-\cos x$                            \\
-    \hline
-    $\cos x$                    & $\sin x$                             \\
-    \hline
-    $\sinh x$                   & $\cosh x$                            \\
-    \hline
-    $\cosh x$                   & $\sinh x$                            \\
-    \hline
-    $\frac{1}{\sqrt{1 - x^2}}$  & $\arcsin x$                          \\
-    \hline
-    $\frac{1}{1 + x^2}$         & $\arctan x$                          \\
-    \hline
-    $\frac{1}{\sqrt{1 + x^2}}$  & $\asinh x$                           \\
-    \hline
-    $\frac{1}{\sqrt{x^2 - 1}}$  & $\acosh x$                           \\
+    \multicolumn{1}{|p{2.2cm}|}{Integrale logaritmico}                       & \int \frac{f'(x)}{f(x)} dx = \ln \Big| f(x) \Big| + C \\
     \hline
 \end{tabular}
+
+{\renewcommand{\arraystretch}{1}
+\begin{tabular}{| M | M |}
+    \hline
+    \rowcolor{lightgray} f(x)  & F(X) (without + C)                                                              \\
+    \hline
+    a                          & ax                                                                              \\
+    x^n                        & \frac{x^{n + 1}}{n + 1}                                                         \\
+    \frac{1}{x}                & \ln |x|                                                                         \\
+    \sqrt{x}                   & \frac{2}{3}x\sqrt{x}                                                            \\
+    \frac{1}{\sqrt{x}}         & 2 \sqrt{x}                                                                      \\
+    \frac{1}{(x - a)(x - b)}   & \frac{1}{a - b}\ln \left| \frac{x - a}{x - b}\right|                            \\
+    \frac{ax + b}{cx + d}      & \frac{ax}{c} - \frac{ad - bc}{c^2}\ln |cx + d|                                  \\
+    \frac{1}{x^2 + a^2}        & \frac{1}{a} \arctan\left( \frac{x}{a} \right)                                   \\
+    \frac{1}{x^2 - a^2}        & \frac{1}{2a} \ln \left| \frac{x - a}{x + a}\right|                              \\
+    \hline
+    e^x                        & e^x                                                                             \\
+    \ln(x)                     & x(\ln(x) - 1)                                                                   \\
+    a^x                        & \frac{a^x}{\ln(a)}                                                              \\
+    \log_a(x)                  & x(\log_a(x) - \log_a(e))                                                        \\
+    xe^{ax}                    & \frac{1}{a^2}(ax - 1)e^{ax}                                                     \\
+    x\ln(ax)                   & \frac{x^2}{4}(2\ln(ax) - 1)                                                     \\
+    \hline
+    \sin(x)                    & -\cos(x)                                                                        \\
+    \arcsin(x)                 & x\arcsin(x) + \sqrt{1 - x^2}                                                    \\
+    \cos(x)                    & \sin(x)                                                                         \\
+    \arccos(x)                 & x\arccos(x) - \sqrt{1 - x^2}                                                    \\
+    \tan(x)                    & -\ln|\cos(x)|                                                                   \\
+    \arctan(x)                 & x\arctan(x) - \frac{1}{2}\ln(1+x^2)                                             \\
+    \cot(x)                    & \ln|\sin(x)|                                                                    \\
+    \arccot(x)                 & x\arccot(x) + \frac{1}{2}\ln(1+x^2)                                             \\
+    \hline
+    \sin^2(x)                  & \frac{1}{2}(x - \sin(x)\cos(x))                                                 \\
+    \cos^2(x)                  & \frac{1}{2}(x + \sin(x)\cos(x))                                                 \\
+    \tan^2(x)                  & \tan(x) - x                                                                     \\
+    \hline
+    \sqrt{x^2 + a}             & \frac{1}{2}x\sqrt{x^2 + a} + \frac{a}{2}\ln \left| x + \sqrt{x^2} + a \right|   \\
+    \frac{1}{\sqrt{x^2 + a}}   & \ln \left| x + \sqrt{x^2 + a}\right|                                            \\
+    \sqrt{r^2 - x^2}           & \frac{1}{2}x\sqrt{r^2 - x^2} + \frac{r^2}{2} \arcsin \left( \frac{x}{r} \right) \\
+    \frac{1}{\sqrt{r^2 - x^2}} & \arcsin\left( \frac{x}{r} \right)                                               \\
+    \hline
+\end{tabular}}
 
 \todo[inline]{More?}
 

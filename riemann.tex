@@ -132,6 +132,19 @@
 \subsection{Euler-McLaurinSummationsformel}
 \todo[inline]{maybe useful? maybe not?}
 
+\subsection{Stirling'sche Formel}
+\begin{satz}{5.47}
+    \[ n! = \frac{\sqrt{2 \pi n} n^n}{e^n} \cdot \exp \left( \frac{1}{12n} + R_3(n) \right) \]
+    wobei
+    \[ |R_3(n)| \le \frac{\sqrt{3}}{216} \cdot \frac{1}{n^2}\quad \forall n \ge 1 \]
+\end{satz}
+
+\begin{satz}{}[Approx $n!$]
+    \[ n! \approx \frac{\sqrt{2 \pi n}n^n}{e^n} \]
+    and
+    \[ \lim_{n \to \infty} n! \ \frac{\sqrt{2 \pi n}n^n}{e^n} = 1 \]
+\end{satz}
+
 \subsection{Uneigentliche Integrale}
 \begin{definition}
     Sei $f: [a, \infty[ \to \R$ beschränkt und integrierbar auf $[a,b]$ für alle $b > a$. Falls
